@@ -24,7 +24,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     //Make sure that the blue selection highlighting fades out when you return.
     if(presetTableView.indexPathForSelectedRow)
-        [presetTableView deselectRowAtIndexPath:presetTableView.indexPathForSelectedRow animated:YES];
+        [presetTableView
+         deselectRowAtIndexPath:presetTableView.indexPathForSelectedRow
+         animated:YES];
 }
 
 // Customize the number of rows in the table view.
