@@ -22,7 +22,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    //Make sure that the blue selection highlighting fades out when you return.
     if(presetTableView.indexPathForSelectedRow)
         [presetTableView deselectRowAtIndexPath:presetTableView.indexPathForSelectedRow animated:YES];
 }
