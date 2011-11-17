@@ -30,7 +30,6 @@
 		D1E8C8BA1469FE86005F81B1 /* ArrayEditorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E8C8B91469FE86005F81B1 /* ArrayEditorVC.m */; };
 		D1E8F641145F14D7006CA583 /* GroupsHelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E8F640145F14D7006CA583 /* GroupsHelpVC.m */; };
 		D1E8F6EA1460B2CB006CA583 /* ConfirmDeletionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E8F6E91460B2CB006CA583 /* ConfirmDeletionDelegate.m */; };
-		D1E8F6EC1461BF02006CA583 /* Project3-revised in Resources */ = {isa = PBXBuildFile; fileRef = D1E8F6EB1461BF02006CA583 /* Project3-revised */; };
 		D1F5AD4F1463290F00881F10 /* CellSizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F5AD4E1463290F00881F10 /* CellSizer.m */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +83,6 @@
 		D1E8F640145F14D7006CA583 /* GroupsHelpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsHelpVC.m; sourceTree = "<group>"; };
 		D1E8F6E81460B2CB006CA583 /* ConfirmDeletionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmDeletionDelegate.h; sourceTree = "<group>"; };
 		D1E8F6E91460B2CB006CA583 /* ConfirmDeletionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmDeletionDelegate.m; sourceTree = "<group>"; };
-		D1E8F6EB1461BF02006CA583 /* Project3-revised */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Project3-revised"; path = "../Project3-revised"; sourceTree = "<group>"; };
 		D1F5AD4D1463290F00881F10 /* CellSizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellSizer.h; sourceTree = "<group>"; };
 		D1F5AD4E1463290F00881F10 /* CellSizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellSizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,7 +114,6 @@
 		D12160421451E763004C886B = {
 			isa = PBXGroup;
 			children = (
-				D1E8F6EB1461BF02006CA583 /* Project3-revised */,
 				D12160571451E764004C886B /* Project3 */,
 				D121606F1451E764004C886B /* Project3Tests */,
 				D12160501451E764004C886B /* Frameworks */,
@@ -313,7 +310,6 @@
 			files = (
 				D121605C1451E764004C886B /* InfoPlist.strings in Resources */,
 				D118DB271456A0450053E6D5 /* happy.png in Resources */,
-				D1E8F6EC1461BF02006CA583 /* Project3-revised in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
