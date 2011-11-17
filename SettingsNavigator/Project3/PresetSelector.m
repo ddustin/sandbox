@@ -21,7 +21,11 @@
     [alert release];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    
+    if(presetTableView.indexPathForSelectedRow)
+        [presetTableView deselectRowAtIndexPath:presetTableView.indexPathForSelectedRow animated:YES];
+}
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

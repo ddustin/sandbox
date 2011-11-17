@@ -81,6 +81,11 @@
 
 #pragma mark - Initialization and loading
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    if(scvcTableView.indexPathForSelectedRow)
+        [scvcTableView deselectRowAtIndexPath:scvcTableView.indexPathForSelectedRow animated:YES];
+}
 
 - (void)viewDidLoad
 {

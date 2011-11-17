@@ -116,6 +116,12 @@
 
 #pragma mark - View lifecycle
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    if(scvcTableView.indexPathForSelectedRow)
+        [scvcTableView deselectRowAtIndexPath:scvcTableView.indexPathForSelectedRow animated:YES];
+}
+
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
