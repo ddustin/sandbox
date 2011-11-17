@@ -23,8 +23,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    // Deselects the selected row.
     if(presetTableView.indexPathForSelectedRow)
-        [presetTableView deselectRowAtIndexPath:presetTableView.indexPathForSelectedRow animated:YES];
+        [presetTableView
+         deselectRowAtIndexPath:presetTableView.indexPathForSelectedRow
+         animated:YES];
 }
 
 // Customize the number of rows in the table view.
