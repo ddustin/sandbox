@@ -19,17 +19,15 @@
 		D121606C1451E764004C886B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12160531451E764004C886B /* Foundation.framework */; };
 		D12160741451E764004C886B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D12160721451E764004C886B /* InfoPlist.strings */; };
 		D12160771451E764004C886B /* Project3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D12160761451E764004C886B /* Project3Tests.m */; };
-		D12160821451E794004C886B /* SettingsCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D12160811451E794004C886B /* SettingsCategoryVC.m */; };
-		D121608514521A35004C886B /* SingleCategoryEditorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D121608414521A35004C886B /* SingleCategoryEditorVC.m */; };
+		D121608514521A35004C886B /* SingleCategoryEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = D121608414521A35004C886B /* SingleCategoryEditor.m */; };
 		D121609414522E67004C886B /* ActiveSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D121609314522E67004C886B /* ActiveSettingCell.m */; };
-		D1DA139B1461C09B007D9BE2 /* GroupSelectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DA139A1461C09B007D9BE2 /* GroupSelectorVC.m */; };
-		D1DA139F1461D5CA007D9BE2 /* OKCancelBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DA139E1461D5CA007D9BE2 /* OKCancelBox.m */; };
+		D139A7DB14749CCA00F15C0B /* SettingsCategories2.m in Sources */ = {isa = PBXBuildFile; fileRef = D139A7DA14749CCA00F15C0B /* SettingsCategories2.m */; };
+		D1973BFA1484237F0090B0B8 /* SelectableTable.m in Sources */ = {isa = PBXBuildFile; fileRef = D1973BF91484237F0090B0B8 /* SelectableTable.m */; };
+		D1DA139B1461C09B007D9BE2 /* GroupSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DA139A1461C09B007D9BE2 /* GroupSelector.m */; };
 		D1E1ACE11457343600529FB9 /* PresetSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E1ACE01457343600529FB9 /* PresetSelector.m */; };
 		D1E1ACE514573D8900529FB9 /* PresetConfirmation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E1ACE414573D8900529FB9 /* PresetConfirmation.m */; };
 		D1E2E099146CAD4C00349E1F /* SeeListEditsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E2E098146CAD4C00349E1F /* SeeListEditsVC.m */; };
 		D1E8C8BA1469FE86005F81B1 /* ArrayEditorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E8C8B91469FE86005F81B1 /* ArrayEditorVC.m */; };
-		D1E8F641145F14D7006CA583 /* GroupsHelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E8F640145F14D7006CA583 /* GroupsHelpVC.m */; };
-		D1E8F6EA1460B2CB006CA583 /* ConfirmDeletionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E8F6E91460B2CB006CA583 /* ConfirmDeletionDelegate.m */; };
 		D1F5AD4F1463290F00881F10 /* CellSizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F5AD4E1463290F00881F10 /* CellSizer.m */; };
 /* End PBXBuildFile section */
 
@@ -61,16 +59,16 @@
 		D12160731451E764004C886B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D12160751451E764004C886B /* Project3Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Project3Tests.h; sourceTree = "<group>"; };
 		D12160761451E764004C886B /* Project3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Project3Tests.m; sourceTree = "<group>"; };
-		D12160801451E794004C886B /* SettingsCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCategoryVC.h; sourceTree = "<group>"; };
-		D12160811451E794004C886B /* SettingsCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCategoryVC.m; sourceTree = "<group>"; };
-		D121608314521A35004C886B /* SingleCategoryEditorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCategoryEditorVC.h; sourceTree = "<group>"; };
-		D121608414521A35004C886B /* SingleCategoryEditorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCategoryEditorVC.m; sourceTree = "<group>"; };
+		D121608314521A35004C886B /* SingleCategoryEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCategoryEditor.h; sourceTree = "<group>"; };
+		D121608414521A35004C886B /* SingleCategoryEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCategoryEditor.m; sourceTree = "<group>"; };
 		D121609214522E67004C886B /* ActiveSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveSettingCell.h; sourceTree = "<group>"; };
 		D121609314522E67004C886B /* ActiveSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveSettingCell.m; sourceTree = "<group>"; };
-		D1DA13991461C09B007D9BE2 /* GroupSelectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupSelectorVC.h; sourceTree = "<group>"; };
-		D1DA139A1461C09B007D9BE2 /* GroupSelectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupSelectorVC.m; sourceTree = "<group>"; };
-		D1DA139D1461D5CA007D9BE2 /* OKCancelBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKCancelBox.h; sourceTree = "<group>"; };
-		D1DA139E1461D5CA007D9BE2 /* OKCancelBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKCancelBox.m; sourceTree = "<group>"; };
+		D139A7D914749CC900F15C0B /* SettingsCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCategories.h; sourceTree = "<group>"; };
+		D139A7DA14749CCA00F15C0B /* SettingsCategories2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCategories2.m; sourceTree = "<group>"; };
+		D1973BF81484237F0090B0B8 /* SelectableTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectableTable.h; sourceTree = "<group>"; };
+		D1973BF91484237F0090B0B8 /* SelectableTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectableTable.m; sourceTree = "<group>"; };
+		D1DA13991461C09B007D9BE2 /* GroupSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupSelector.h; sourceTree = "<group>"; };
+		D1DA139A1461C09B007D9BE2 /* GroupSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupSelector.m; sourceTree = "<group>"; };
 		D1E1ACDF1457343600529FB9 /* PresetSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetSelector.h; sourceTree = "<group>"; };
 		D1E1ACE01457343600529FB9 /* PresetSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetSelector.m; sourceTree = "<group>"; };
 		D1E1ACE314573D8800529FB9 /* PresetConfirmation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetConfirmation.h; sourceTree = "<group>"; };
@@ -79,10 +77,6 @@
 		D1E2E098146CAD4C00349E1F /* SeeListEditsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeeListEditsVC.m; sourceTree = "<group>"; };
 		D1E8C8B81469FE86005F81B1 /* ArrayEditorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayEditorVC.h; sourceTree = "<group>"; };
 		D1E8C8B91469FE86005F81B1 /* ArrayEditorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayEditorVC.m; sourceTree = "<group>"; };
-		D1E8F63F145F14D7006CA583 /* GroupsHelpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsHelpVC.h; sourceTree = "<group>"; };
-		D1E8F640145F14D7006CA583 /* GroupsHelpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsHelpVC.m; sourceTree = "<group>"; };
-		D1E8F6E81460B2CB006CA583 /* ConfirmDeletionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmDeletionDelegate.h; sourceTree = "<group>"; };
-		D1E8F6E91460B2CB006CA583 /* ConfirmDeletionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmDeletionDelegate.m; sourceTree = "<group>"; };
 		D1F5AD4D1463290F00881F10 /* CellSizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellSizer.h; sourceTree = "<group>"; };
 		D1F5AD4E1463290F00881F10 /* CellSizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellSizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,29 +138,13 @@
 		D12160571451E764004C886B /* Project3 */ = {
 			isa = PBXGroup;
 			children = (
+				D1973BF81484237F0090B0B8 /* SelectableTable.h */,
+				D1973BF91484237F0090B0B8 /* SelectableTable.m */,
+				D1973BF51483FBB50090B0B8 /* Top Level */,
+				D1973BF61483FC3F0090B0B8 /* Main Track */,
 				D1DEFF151474741600473D99 /* Presets */,
-				D12160601451E764004C886B /* AppDelegate.h */,
-				D12160611451E764004C886B /* AppDelegate.m */,
-				D1DA13991461C09B007D9BE2 /* GroupSelectorVC.h */,
-				D1DA139A1461C09B007D9BE2 /* GroupSelectorVC.m */,
-				D1DEFF13147473FA00473D99 /* OKCancelBox */,
-				D12160801451E794004C886B /* SettingsCategoryVC.h */,
-				D12160811451E794004C886B /* SettingsCategoryVC.m */,
-				D1E8C8B81469FE86005F81B1 /* ArrayEditorVC.h */,
-				D1E8C8B91469FE86005F81B1 /* ArrayEditorVC.m */,
-				D1E8F6E81460B2CB006CA583 /* ConfirmDeletionDelegate.h */,
-				D1E8F6E91460B2CB006CA583 /* ConfirmDeletionDelegate.m */,
-				D1E8F63F145F14D7006CA583 /* GroupsHelpVC.h */,
-				D1E8F640145F14D7006CA583 /* GroupsHelpVC.m */,
-				D1E2E097146CAD4C00349E1F /* SeeListEditsVC.h */,
-				D1E2E098146CAD4C00349E1F /* SeeListEditsVC.m */,
-				D1F5AD4D1463290F00881F10 /* CellSizer.h */,
-				D1F5AD4E1463290F00881F10 /* CellSizer.m */,
-				D121608314521A35004C886B /* SingleCategoryEditorVC.h */,
-				D121608414521A35004C886B /* SingleCategoryEditorVC.m */,
+				D1973BF71483FC7F0090B0B8 /* Cells */,
 				D118DB261456A0450053E6D5 /* happy.png */,
-				D121609214522E67004C886B /* ActiveSettingCell.h */,
-				D121609314522E67004C886B /* ActiveSettingCell.m */,
 				D12160581451E764004C886B /* Supporting Files */,
 			);
 			path = Project3;
@@ -202,13 +180,104 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D1DEFF13147473FA00473D99 /* OKCancelBox */ = {
+		D139A7D5147499F900F15C0B /* GroupSelector */ = {
 			isa = PBXGroup;
 			children = (
-				D1DA139D1461D5CA007D9BE2 /* OKCancelBox.h */,
-				D1DA139E1461D5CA007D9BE2 /* OKCancelBox.m */,
+				D1DA13991461C09B007D9BE2 /* GroupSelector.h */,
+				D1DA139A1461C09B007D9BE2 /* GroupSelector.m */,
 			);
-			name = OKCancelBox;
+			name = GroupSelector;
+			sourceTree = "<group>";
+		};
+		D139A7D614749B3600F15C0B /* ArrayEditor */ = {
+			isa = PBXGroup;
+			children = (
+				D1E8C8B81469FE86005F81B1 /* ArrayEditorVC.h */,
+				D1E8C8B91469FE86005F81B1 /* ArrayEditorVC.m */,
+			);
+			name = ArrayEditor;
+			sourceTree = "<group>";
+		};
+		D139A7D714749B4500F15C0B /* SeeListEdits */ = {
+			isa = PBXGroup;
+			children = (
+				D1E2E097146CAD4C00349E1F /* SeeListEditsVC.h */,
+				D1E2E098146CAD4C00349E1F /* SeeListEditsVC.m */,
+			);
+			name = SeeListEdits;
+			sourceTree = "<group>";
+		};
+		D1973BF01483FB350090B0B8 /* SettingsCategories */ = {
+			isa = PBXGroup;
+			children = (
+				D139A7D914749CC900F15C0B /* SettingsCategories.h */,
+				D139A7DA14749CCA00F15C0B /* SettingsCategories2.m */,
+			);
+			name = SettingsCategories;
+			sourceTree = "<group>";
+		};
+		D1973BF11483FB630090B0B8 /* ActiveSettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				D121609214522E67004C886B /* ActiveSettingCell.h */,
+				D121609314522E67004C886B /* ActiveSettingCell.m */,
+			);
+			name = ActiveSettingCell;
+			sourceTree = "<group>";
+		};
+		D1973BF21483FB780090B0B8 /* SingleCategoryEditor */ = {
+			isa = PBXGroup;
+			children = (
+				D121608314521A35004C886B /* SingleCategoryEditor.h */,
+				D121608414521A35004C886B /* SingleCategoryEditor.m */,
+			);
+			name = SingleCategoryEditor;
+			sourceTree = "<group>";
+		};
+		D1973BF31483FB870090B0B8 /* CellSizer */ = {
+			isa = PBXGroup;
+			children = (
+				D1F5AD4D1463290F00881F10 /* CellSizer.h */,
+				D1F5AD4E1463290F00881F10 /* CellSizer.m */,
+			);
+			name = CellSizer;
+			sourceTree = "<group>";
+		};
+		D1973BF41483FBA20090B0B8 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D12160601451E764004C886B /* AppDelegate.h */,
+				D12160611451E764004C886B /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		D1973BF51483FBB50090B0B8 /* Top Level */ = {
+			isa = PBXGroup;
+			children = (
+				D1973BF41483FBA20090B0B8 /* AppDelegate */,
+				D139A7D5147499F900F15C0B /* GroupSelector */,
+			);
+			name = "Top Level";
+			sourceTree = "<group>";
+		};
+		D1973BF61483FC3F0090B0B8 /* Main Track */ = {
+			isa = PBXGroup;
+			children = (
+				D1973BF01483FB350090B0B8 /* SettingsCategories */,
+				D1973BF21483FB780090B0B8 /* SingleCategoryEditor */,
+				D139A7D614749B3600F15C0B /* ArrayEditor */,
+			);
+			name = "Main Track";
+			sourceTree = "<group>";
+		};
+		D1973BF71483FC7F0090B0B8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D1973BF31483FB870090B0B8 /* CellSizer */,
+				D1973BF11483FB630090B0B8 /* ActiveSettingCell */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		D1DEFF151474741600473D99 /* Presets */ = {
@@ -216,6 +285,7 @@
 			children = (
 				D1DEFF171474747200473D99 /* PresetSelector */,
 				D1DEFF161474742700473D99 /* PresetConfirmation */,
+				D139A7D714749B4500F15C0B /* SeeListEdits */,
 			);
 			name = Presets;
 			sourceTree = "<group>";
@@ -346,18 +416,16 @@
 			files = (
 				D121605E1451E764004C886B /* main.m in Sources */,
 				D12160621451E764004C886B /* AppDelegate.m in Sources */,
-				D12160821451E794004C886B /* SettingsCategoryVC.m in Sources */,
-				D121608514521A35004C886B /* SingleCategoryEditorVC.m in Sources */,
+				D121608514521A35004C886B /* SingleCategoryEditor.m in Sources */,
 				D121609414522E67004C886B /* ActiveSettingCell.m in Sources */,
 				D1E1ACE11457343600529FB9 /* PresetSelector.m in Sources */,
 				D1E1ACE514573D8900529FB9 /* PresetConfirmation.m in Sources */,
-				D1E8F641145F14D7006CA583 /* GroupsHelpVC.m in Sources */,
-				D1E8F6EA1460B2CB006CA583 /* ConfirmDeletionDelegate.m in Sources */,
-				D1DA139B1461C09B007D9BE2 /* GroupSelectorVC.m in Sources */,
-				D1DA139F1461D5CA007D9BE2 /* OKCancelBox.m in Sources */,
+				D1DA139B1461C09B007D9BE2 /* GroupSelector.m in Sources */,
 				D1F5AD4F1463290F00881F10 /* CellSizer.m in Sources */,
 				D1E8C8BA1469FE86005F81B1 /* ArrayEditorVC.m in Sources */,
 				D1E2E099146CAD4C00349E1F /* SeeListEditsVC.m in Sources */,
+				D139A7DB14749CCA00F15C0B /* SettingsCategories2.m in Sources */,
+				D1973BFA1484237F0090B0B8 /* SelectableTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

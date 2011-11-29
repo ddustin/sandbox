@@ -25,14 +25,6 @@
 
 
 
-- (id) initWithArray:(NSMutableArray*)mmyArray {
-    self = [super init];
-    self.myArray = mmyArray;
-    return self;
-}
-
-
-
 
 - (void) propagate {
     //Do stuff here to update or w/e
@@ -42,8 +34,7 @@
 
 
 
-#pragma mark - TableViewDelegateFunctions
-
+#pragma mark - Table View
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [myArray count];
@@ -67,8 +58,8 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableDictionary *subDict = [myArray objectAtIndex: [indexPath row]];
     
-    SingleCategoryEditorVC *singleArrayEditor =
-    [[SingleCategoryEditorVC alloc] initWithSubdictsAndTitle:subDict meta:nil
+    SingleCategoryEditor *singleArrayEditor =
+    [[SingleCategoryEditor alloc] initWithSubdictsAndTitle:subDict meta:nil
      title:@"Edit list element"];
     
     
@@ -78,8 +69,25 @@
     
 }
 
+#pragma mark - Actions
 
-#pragma mark - Initialization and loading
+- (IBAction) addButtonClicked:(id) sender {
+    [self alert:@"Add new item!"];
+}
+
+
+
+#pragma mark - View lifecycle
+
+
+
+- (id) initWithArray:(NSMutableArray*)mmyArray {
+    self = [super init];
+    self.myArray = mmyArray;
+    return self;
+}
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -118,10 +126,6 @@
 
 
 
-- (IBAction) addButtonClicked:(id) sender {
-    [self alert:@"Add new item!"];
-}
-
 
 
 
@@ -136,10 +140,5 @@
     
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
 
 @end

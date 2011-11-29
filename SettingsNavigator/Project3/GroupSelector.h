@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GroupSelectorVC : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
+@interface GroupSelector : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
     UITableView *groupsTableView;
     NSString *tempGroupName;
 

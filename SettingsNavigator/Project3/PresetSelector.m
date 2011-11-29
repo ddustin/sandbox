@@ -21,13 +21,8 @@
     [alert release];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    //Make sure that the blue selection highlighting fades out when you return.
-    if(presetTableView.indexPathForSelectedRow)
-        [presetTableView
-         deselectRowAtIndexPath:presetTableView.indexPathForSelectedRow
-         animated:YES];
-}
+
+#pragma mark - Table View
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -62,6 +57,13 @@
     
 }
 
+
+
+
+#pragma mark - View lifecycle
+
+
+
 -(id) initWithDict:(NSDictionary*)ppresetDict metaDict:(NSDictionary*)mmetaDict {
     self = [super init];
     self.presetDict = ppresetDict;
@@ -86,10 +88,15 @@
     [presetTableView release];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
+
+- (void)viewWillAppear:(BOOL)animated {
+    //Make sure that the blue selection highlighting fades out when you return.
+    if(presetTableView.indexPathForSelectedRow)
+        [presetTableView
+         deselectRowAtIndexPath:presetTableView.indexPathForSelectedRow
+         animated:YES];
 }
+
+
 
 @end

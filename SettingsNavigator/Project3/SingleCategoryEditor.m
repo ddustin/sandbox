@@ -6,31 +6,25 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "SingleCategoryEditorVC.h"
+#import "SingleCategoryEditor.h"
 #import "ActiveSettingCell.h"
-#import "SettingsCategoryVC.h"
+#import "SettingsCategories.h"
 #import "ArrayEditorVC.h"
 #import "CellSizer.h"
 
-@interface SingleCategoryEditorVC ()
+@interface SingleCategoryEditor ()
 
 
 
 @end
 
-@implementation SingleCategoryEditorVC
+@implementation SingleCategoryEditor
 
 @synthesize myDict, myMetaDict;
 @synthesize superior;
 @synthesize editable;
 
-- (void)dealloc {
-    
-    self.myDict = nil;
-    self.myMetaDict = nil;
-    
-    [super dealloc];
-}
+
 
 - (void)alert:(NSString*)text {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert!" message:text delegate:self cancelButtonTitle:@"OK"    otherButtonTitles:nil] ;
@@ -38,9 +32,15 @@
     [alert release];
 }
 
+-(void) propagate {
+    //do stuff
+    //[self alert:@"First level propagation"];
+    [superior propagate];
+}
 
 
 
+#pragma mark - Table View
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -160,13 +160,6 @@
     return cell;
 }
 
-- (void) editButtonClicked {
-    //[self alert:[NSString stringWithFormat:@"%d",[tempArray count]] ];
-    ArrayEditorVC* aePage = [[ArrayEditorVC alloc] initWithArray:tempArray];
-    aePage.superior = self;
-    [self.navigationController pushViewController:aePage animated:YES];
-    [aePage release];
-}
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -183,18 +176,27 @@
     return output;
 }
 
-/*
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //[self alert:@"Very nice"];
-    [self alert:[myDict objectForKey:[[myDict allKeys] objectAtIndex: [indexPath row]]]];
-}
-*///Don't really need this
 
+
+#pragma mark - Actions
+
+- (void) editButtonClicked {
+    //[self alert:[NSString stringWithFormat:@"%d",[tempArray count]] ];
+    ArrayEditorVC* aePage = [[ArrayEditorVC alloc] initWithArray:tempArray];
+    aePage.superior = self;
+    [self.navigationController pushViewController:aePage animated:YES];
+    [aePage release];
+}
 
 
 - (IBAction) switchClicked:(id) sender {
     [self alert:@"Toggle!"]; 
 }
+
+
+#pragma mark - View lifecycle
+
+
 
 - (id)initWithSubdictsAndTitle: (NSMutableDictionary *)sd meta:(NSDictionary *)md
                          title:(NSString*)ttitle {
@@ -211,38 +213,6 @@
     return self;
 }
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
--(void) propagate {
-    //do stuff
-    //[self alert:@"First level propagation"];
-    [superior propagate];
-}
 
 
 ///*
@@ -265,17 +235,16 @@
 }
 //*/
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+
+- (void)dealloc {
+    
+    self.myDict = nil;
+    self.myMetaDict = nil;
+    
+    [super dealloc];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
+
+
 
 @end

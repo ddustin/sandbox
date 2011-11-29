@@ -8,7 +8,7 @@
 
 #import "SeeListEditsVC.h"
 //#import "ArrayEditorVC.h"
-#import "SingleCategoryEditorVC.h"
+#import "SingleCategoryEditor.h"
 #import "ActiveSettingCell.h"
 
 
@@ -28,13 +28,6 @@
 
 
 
-- (id) initWithArrays:(NSMutableArray*)bbefore after:(NSMutableArray*)aafter {
-    self = [super init];
-    before = bbefore;
-    after = aafter;
-    return self;
-}
-
 
 
 
@@ -44,6 +37,9 @@
 }
 
 
+
+
+#pragma mark - Table View
 
 
 // Customize the number of rows in the table view.
@@ -102,12 +98,6 @@
     return cell;
 }
 
-- (void) cButtonClicked:(NSMutableDictionary*)dict {
-    SingleCategoryEditorVC* scPage = [[SingleCategoryEditorVC alloc] initWithSubdictsAndTitle:dict meta:nil title:@"View element"];
-    scPage.editable = NO;
-    [self.navigationController pushViewController:scPage animated:YES];
-    [scPage release];
-}
 
 
 ///*
@@ -126,34 +116,36 @@
 }
 //*/
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+
+
+
+#pragma mark - Actions
+
+- (IBAction) addButtonClicked:(id) sender {
+    //[self alert:@"Add new item!"];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+- (void) cButtonClicked:(NSMutableDictionary*)dict {
+    SingleCategoryEditor* scPage = [[SingleCategoryEditor alloc] initWithSubdictsAndTitle:dict meta:nil title:@"View element"];
+    scPage.editable = NO;
+    [self.navigationController pushViewController:scPage animated:YES];
+    [scPage release];
 }
+
+
 
 #pragma mark - View lifecycle
 
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView
- {
- }
- */
 
-///*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
+- (id) initWithArrays:(NSMutableArray*)bbefore after:(NSMutableArray*)aafter {
+    self = [super init];
+    before = bbefore;
+    after = aafter;
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -255,9 +247,6 @@
 
 
 
-- (IBAction) addButtonClicked:(id) sender {
-    //[self alert:@"Add new item!"];
-}
 
 
 
@@ -275,10 +264,5 @@
     
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
 
 @end

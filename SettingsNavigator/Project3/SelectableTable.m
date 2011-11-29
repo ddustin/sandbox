@@ -6,13 +6,13 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "SettingsCategories.h"
-#import "SingleCategoryEditorVC.h"
+#import "SelectableTable.h"
+#import "SingleCategoryEditor.h"
 #import "PresetSelector.h"
 #import "GroupsVC.h"
 
 
-@implementation SettingsCategories
+@implementation SelectableTable
 
 @synthesize settingsDict;
 @synthesize superior;
@@ -26,12 +26,6 @@
 
 
 
-- (id) initWithDicts:(NSMutableDictionary*)ssettingsDict superior:(GroupSelector*)ssuperior {
-    self = [super init];
-    self.settingsDict = ssettingsDict;
-    self.superior = ssuperior;
-    return self;
-}
 
 
 
@@ -42,12 +36,10 @@
 }
 
 
-
+#pragma mark - TableView
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //self.colorNames = [[NSUserDefaults standardUserDefaults] objectForKey:@"data"];
-    //return [self.colorNames count];
     return [settingsDict count];
 }
 
@@ -62,11 +54,8 @@
     }
     
     // Configure the cell.
-    //cell.textLabel.text = [self.colorNames objectAtIndex: [indexPath row]];
     cell.textLabel.text = [[settingsDict allKeys] objectAtIndex: [indexPath row]];
-    //[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    //[self alert:[[settingsDict allKeys] objectAtIndex: [indexPath row]]];
-    //cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
     return cell;
 }
 
@@ -74,17 +63,10 @@
     NSDictionary *subDict =
     [settingsDict objectForKey:[[settingsDict allKeys] objectAtIndex: [indexPath row]]];
     
-    //for(id key in subDict) {
-    //    NSString *tmp = [subDict objectForKey:key];
-    //    [self alert:tmp];
-   // }
-    
-    //NSDictionary *subMeta =
-    //[superior.metaDict objectForKey:[superior.metaDict.allKeys objectAtIndex:indexPath.row]];
     NSDictionary *subMeta =
     [superior.metaDict objectForKey:[[settingsDict allKeys] objectAtIndex: [indexPath row]]];    
-    SingleCategoryEditorVC *editorPage =
-    [[SingleCategoryEditorVC alloc]
+    SingleCategoryEditor *editorPage =
+    [[SingleCategoryEditor alloc]
      initWithSubdictsAndTitle:subDict meta:subMeta
      title:[settingsDict.allKeys objectAtIndex:indexPath.row]];
     
@@ -93,28 +75,22 @@
     [self.navigationController pushViewController:editorPage animated:YES];
     [editorPage release];
     
-    //[self alert:[[settingsDict allKeys] objectAtIndex: [indexPath row]]];
 }
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+
+
 
 #pragma mark - View lifecycle
+
+
+- (id) initWithDicts:(NSMutableDictionary*)ssettingsDict superior:(GroupSelector*)ssuperior {
+    self = [super init];
+    self.settingsDict = ssettingsDict;
+    self.superior = ssuperior;
+    return self;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -122,15 +98,10 @@
         [scvcTableView deselectRowAtIndexPath:scvcTableView.indexPathForSelectedRow animated:YES];
 }
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
 
-///*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -170,6 +141,24 @@
 
 
 
+
+
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+    [scvcTableView release];
+    [settingsDict release];
+    
+    
+    
+}
+
+#pragma mark - Actions
+
+
 - (IBAction) presetsButtonClicked:(id) sender {
     //[self alert:@"So you want presets?"];
     //[self alert:myGroup];
@@ -178,7 +167,7 @@
     presetPage.existingDict = settingsDict;
     [self.navigationController pushViewController:presetPage animated:YES];
     [presetPage release];
-
+    
 }
 
 
@@ -238,23 +227,5 @@
 
 
 
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    [scvcTableView release];
-    [settingsDict release];
-
-
-
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
 
 @end

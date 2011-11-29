@@ -10,6 +10,10 @@
 
 @implementation CellSizer
 
+
+/* Calculate what the height of a cell should be, given the text that it
+ * will contain, and whether or not there is an image in the cell.
+ */
 -(float) bestSizeForCell:(NSString*)details hasImage:(BOOL)hasImage {
     
     float output = 200.0;

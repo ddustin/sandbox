@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SingleCategoryEditorVC.h"
-#import "GroupSelectorVC.h"
+#import "SingleCategoryEditor.h"
+#import "GroupSelector.h"
 
 
 
@@ -24,7 +24,7 @@
 
 - (id) initWithArray:(NSMutableArray*)mmyArray;
 @property (nonatomic, retain) NSMutableArray* myArray;
-@property (nonatomic, retain) SingleCategoryEditorVC* superior;
+@property (nonatomic, retain) SingleCategoryEditor* superior;
 
 
 

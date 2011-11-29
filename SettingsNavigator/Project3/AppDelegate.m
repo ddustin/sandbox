@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 
-#import "SettingsCategoryVC.h"
+#import "SettingsCategories.h"
 //#import <Frameworks/UINavigationController>
 
 @implementation AppDelegate
@@ -36,7 +36,7 @@
         self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil] autorelease];
     }*/
     
-    GroupSelectorVC * rvc = [[GroupSelectorVC alloc] init];  
+    GroupSelector * rvc = [[GroupSelector alloc] init];  
     
     UINavigationController *uinc = [[UINavigationController alloc] initWithRootViewController:rvc];
     

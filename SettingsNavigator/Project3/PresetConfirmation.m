@@ -7,7 +7,7 @@
 //
 
 #import "PresetConfirmation.h"
-#import "SettingsCategoryVC.h"
+#import "SettingsCategories.h"
 #import "CellSizer.h"
 #import "ActiveSettingCell.h"
 #import "SeeListEditsVC.h"
@@ -35,7 +35,7 @@ NSMutableArray* listToChangeAfter;
 }
 
 
-
+#pragma mark - Table View
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -208,11 +208,6 @@ NSMutableArray* listToChangeAfter;
     return cell;
 }
 
-- (void) moreButtonClicked:(NSMutableArray*)bbefore after:(NSMutableArray*)aafter {
-    SeeListEditsVC* morePage = [[SeeListEditsVC alloc] initWithArrays: bbefore after:aafter];
-    [self.navigationController pushViewController:morePage animated:YES];
-    //[self alert:@"View MORE!!!!"];
-}
 
 
 
@@ -266,32 +261,14 @@ NSMutableArray* listToChangeAfter;
 }
 
 
+#pragma mark - Actions
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (void) moreButtonClicked:(NSMutableArray*)bbefore after:(NSMutableArray*)aafter {
+    SeeListEditsVC* morePage = [[SeeListEditsVC alloc] initWithArrays: bbefore after:aafter];
+    [self.navigationController pushViewController:morePage animated:YES];
+    //[self alert:@"View MORE!!!!"];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
 
 - (IBAction) confirmButtonClicked:(id) sender {
     for (NSUInteger i = 0; i < [changes count]; i++) {
@@ -309,7 +286,7 @@ NSMutableArray* listToChangeAfter;
         }
     }
     
-    SettingsCategoryVC* scvc = [[self.navigationController viewControllers] objectAtIndex:([[self.navigationController viewControllers] count] - 3 )];
+    SettingsCategories* scvc = [[self.navigationController viewControllers] objectAtIndex:([[self.navigationController viewControllers] count] - 3 )];
     [scvc propagate];
     [self.navigationController popToViewController:scvc animated:YES];
     
@@ -318,11 +295,23 @@ NSMutableArray* listToChangeAfter;
 
 
 
+#pragma mark - View lifecycle
 
 
 
-///*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
+
+-(id) initWithDicts:(NSDictionary*)mmyPresetDict existingDict:(NSMutableDictionary*)eexistingDict metaDict:(NSDictionary*)mmetaDict {
+    self = [super init];
+    self.myPresetDict = mmyPresetDict;
+    self.existingDict = eexistingDict;
+    self.metaDict = mmetaDict;
+    return self;
+}
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -401,20 +390,7 @@ NSMutableArray* listToChangeAfter;
 
 
 
--(id) initWithDicts:(NSDictionary*)mmyPresetDict existingDict:(NSMutableDictionary*)eexistingDict metaDict:(NSDictionary*)mmetaDict {
-    self = [super init];
-    self.myPresetDict = mmyPresetDict;
-    self.existingDict = eexistingDict;
-    self.metaDict = mmetaDict;
-    return self;
-}
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
 
 - (void)dealloc {
     [changes release];
@@ -422,10 +398,6 @@ NSMutableArray* listToChangeAfter;
     [super dealloc];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
+
 
 @end

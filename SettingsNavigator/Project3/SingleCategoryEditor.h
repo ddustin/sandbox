@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingsCategoryVC.h"
+#import "SettingsCategories.h"
 
-@protocol SingleCategoryEditorVCDelegate <NSObject>
+@protocol SingleCategoryEditorDelegate <NSObject>
 - (void) propagate;
 @end
 
-@interface SingleCategoryEditorVC : UIViewController <UITableViewDataSource, UITableViewDelegate, SingleCategoryEditorVCDelegate> {
+@interface SingleCategoryEditor : UIViewController <UITableViewDataSource, UITableViewDelegate, SingleCategoryEditorDelegate> {
     NSMutableArray* tempArray;
     
 }

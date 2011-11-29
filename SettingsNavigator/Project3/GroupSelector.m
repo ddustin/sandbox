@@ -6,12 +6,12 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "GroupSelectorVC.h"
-#import "SettingsCategoryVC.h"
+#import "GroupSelector.h"
+#import "SettingsCategories.h"
 
 
 
-@implementation GroupSelectorVC
+@implementation GroupSelector
 
 @synthesize myGroup;
 @synthesize groupsDict;
@@ -28,6 +28,17 @@
 
 
 
+
+- (void) propagate {
+    //Do stuff here to update or w/e
+    [self alert:@"Just changed something!!!!"];
+}
+
+
+
+
+
+#pragma mark - Table View
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -64,7 +75,7 @@
     NSMutableDictionary *subDict = [groupsDict objectForKey:myGroup];
 
     
-    SettingsCategoryVC* settingsPage = [[SettingsCategoryVC alloc] initWithDicts:subDict superior:self];
+    SettingsCategories* settingsPage = [[SettingsCategories alloc] initWithDicts:subDict superior:self];
     
     [self.navigationController pushViewController:settingsPage animated:YES];
     [settingsPage release];
@@ -73,38 +84,83 @@
 }
 
 
+#pragma mark - Actions
 
 
 
-
-
-
-
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (IBAction) addButtonClicked:(id) sender {
+    //[self.navigationController popViewControllerAnimated:YES];
     
-    // Release any cached data, images, etc that aren't in use.
+    //[self alert:@"New group?"];
+    
+    UIAlertView *promptAlert = [[UIAlertView alloc] initWithTitle:@"Create new group" message:@"\n\n\n"
+                                                         delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) otherButtonTitles:NSLocalizedString(@"OK",nil), nil];
+    
+    UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(12,40,260,25)];
+    promptLabel.font = [UIFont systemFontOfSize:16];
+    promptLabel.numberOfLines = 3;
+    promptLabel.textColor = [UIColor whiteColor];
+    promptLabel.backgroundColor = [UIColor clearColor];
+    promptLabel.shadowColor = [UIColor blackColor];
+    promptLabel.shadowOffset = CGSizeMake(0,-1);
+    promptLabel.textAlignment = UITextAlignmentCenter;
+    promptLabel.text = @"Enter the name of the new group:";
+    [promptAlert addSubview:promptLabel];
+    
+    UIImageView *promptImage = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"passwordfield" ofType:@"png"]]];
+    promptImage.frame = CGRectMake(11,79,262,31);
+    [promptAlert addSubview:promptImage];
+    
+    UITextField *promptField = [[UITextField alloc] initWithFrame:CGRectMake(16,83,252,25)];
+    promptField.font = [UIFont systemFontOfSize:18];
+    promptField.backgroundColor = [UIColor whiteColor];
+    //promptField.secureTextEntry = YES;
+    promptField.keyboardAppearance = UIKeyboardAppearanceAlert;
+    promptField.delegate = self;
+    [promptField becomeFirstResponder];
+    [promptAlert addSubview:promptField];
+    
+    //[promptAlert setTransform:CGAffineTransformMakeTranslation(0,109)];
+    [promptAlert show];
+    [promptAlert release];
+    [promptField release];
+    [promptImage release];
+    [promptLabel release];
+    
+}
+- (void)textFieldDidEndEditing:(UITextField*)textField {
+    //[self alert:textField.text];
+    tempGroupName = textField.text;
+}
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        //[self alert:tempGroupName];
+        //"New Group" function continues here.
+        if ([self.groupsDict objectForKey:tempGroupName] != nil) {
+            [self alert:@"That name is already taken."];
+        }
+        else if ([tempGroupName isEqualToString:@""]) {
+            [self alert:@"Please enter a name for the new group."];
+        }
+        else {
+            //[self alert:tempGroupName];
+            NSMutableDictionary* newGroupSettings = [self deepCopySettingsFromGroup:myGroup];
+            [groupsDict setObject:newGroupSettings forKey:tempGroupName];
+            //There is no need to copy the metaDict, since it's the same for all groups.
+            //[newGroupSettings release]; //Is it necessary/safe to do this?
+            [myGroup release];
+            myGroup = [tempGroupName copy];
+            [groupsTableView reloadData];
+        }
+    }
 }
 
 
 
-- (void) propagate {
-    //Do stuff here to update or w/e
-    [self alert:@"Just changed something!!!!"];
-}
+
+#pragma mark - Helper functions
+
+
 
 - (void) renameGroup:(NSString*)oldName to:(NSString*)newName {
     //[self alert:[oldName stringByAppendingString:newName]];
@@ -118,17 +174,54 @@
 }
 
 
+
+/* Creates and returns a copy of the settings dictionary for group "groupName",
+ including a copy of all the strings and numbers in that dictionary. */
+- (NSMutableDictionary*) deepCopySettingsFromGroup:(NSString*)groupName {
+    NSMutableDictionary* original = [groupsDict objectForKey:groupName];
+    return [self deepCopyDictionary:original]; 
+}
+
+
+- (NSMutableDictionary*) deepCopyDictionary:(NSMutableDictionary*)original {
+    NSMutableDictionary* output = [[NSMutableDictionary alloc] init];
+    for (NSString* k in [original allKeys]) {
+        id item = [original objectForKey:k];
+        if ([item isKindOfClass:[NSMutableDictionary class]]) {
+            [output setObject:[self deepCopyDictionary:item] forKey:k];
+        }
+        else if ([item isKindOfClass:[NSMutableArray class]]) {
+            [output setObject:[self deepCopyArray:item] forKey:k];
+        }
+        else { //It had better be an ordinary object!
+            [output setObject:[item copy] forKey:k];
+        }
+    }
+    return output;
+}
+
+- (NSMutableArray*) deepCopyArray:(NSMutableArray*)original {
+    NSMutableArray* output = [[NSMutableArray alloc] init];
+    for (id item in original) {
+        if ([item isKindOfClass:[NSMutableDictionary class]]) {
+            [output addObject:[self deepCopyDictionary:item]];
+        }
+        else if ([item isKindOfClass:[NSMutableArray class]]) {
+            [output addObject:[self deepCopyArray:item]];
+        }
+        else { //It had better be an ordinary object!
+            [output addObject:[item copy]];
+        }
+    }
+    return output;
+}
+
+
+
+
 #pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
 
-///*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -320,136 +413,6 @@
     
     
     
-}
-//*/
-
-
-- (IBAction) addButtonClicked:(id) sender {
-    //[self.navigationController popViewControllerAnimated:YES];
-    
-    //[self alert:@"New group?"];
-    
-    UIAlertView *promptAlert = [[UIAlertView alloc] initWithTitle:@"Create new group" message:@"\n\n\n"
-                                                         delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) otherButtonTitles:NSLocalizedString(@"OK",nil), nil];
-    
-    UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(12,40,260,25)];
-    promptLabel.font = [UIFont systemFontOfSize:16];
-    promptLabel.numberOfLines = 3;
-    promptLabel.textColor = [UIColor whiteColor];
-    promptLabel.backgroundColor = [UIColor clearColor];
-    promptLabel.shadowColor = [UIColor blackColor];
-    promptLabel.shadowOffset = CGSizeMake(0,-1);
-    promptLabel.textAlignment = UITextAlignmentCenter;
-    promptLabel.text = @"Enter the name of the new group:";
-    [promptAlert addSubview:promptLabel];
-    
-    UIImageView *promptImage = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"passwordfield" ofType:@"png"]]];
-    promptImage.frame = CGRectMake(11,79,262,31);
-    [promptAlert addSubview:promptImage];
-    
-    UITextField *promptField = [[UITextField alloc] initWithFrame:CGRectMake(16,83,252,25)];
-    promptField.font = [UIFont systemFontOfSize:18];
-    promptField.backgroundColor = [UIColor whiteColor];
-    //promptField.secureTextEntry = YES;
-    promptField.keyboardAppearance = UIKeyboardAppearanceAlert;
-    promptField.delegate = self;
-    [promptField becomeFirstResponder];
-    [promptAlert addSubview:promptField];
-    
-    //[promptAlert setTransform:CGAffineTransformMakeTranslation(0,109)];
-    [promptAlert show];
-    [promptAlert release];
-    [promptField release];
-    [promptImage release];
-    [promptLabel release];
-    
-}
-- (void)textFieldDidEndEditing:(UITextField*)textField {
-    //[self alert:textField.text];
-    tempGroupName = textField.text;
-}
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        //[self alert:tempGroupName];
-        //"New Group" function continues here.
-        if ([self.groupsDict objectForKey:tempGroupName] != nil) {
-            [self alert:@"That name is already taken."];
-        }
-        else if ([tempGroupName isEqualToString:@""]) {
-            [self alert:@"Please enter a name for the new group."];
-        }
-        else {
-            //[self alert:tempGroupName];
-            NSMutableDictionary* newGroupSettings = [self deepCopySettingsFromGroup:myGroup];
-            [groupsDict setObject:newGroupSettings forKey:tempGroupName];
-            //There is no need to copy the metaDict, since it's the same for all groups.
-            //[newGroupSettings release]; //Is it necessary/safe to do this?
-            [myGroup release];
-            myGroup = [tempGroupName copy];
-            [groupsTableView reloadData];
-        }
-    }
-}
-
-
-
-/* Creates and returns a copy of the settings dictionary for group "groupName",
- including a copy of all the strings and numbers in that dictionary. */
-- (NSMutableDictionary*) deepCopySettingsFromGroup:(NSString*)groupName {
-    NSMutableDictionary* original = [groupsDict objectForKey:groupName];
-    return [self deepCopyDictionary:original]; 
-}
-
-
-- (NSMutableDictionary*) deepCopyDictionary:(NSMutableDictionary*)original {
-    NSMutableDictionary* output = [[NSMutableDictionary alloc] init];
-    for (NSString* k in [original allKeys]) {
-        id item = [original objectForKey:k];
-        if ([item isKindOfClass:[NSMutableDictionary class]]) {
-            [output setObject:[self deepCopyDictionary:item] forKey:k];
-        }
-        else if ([item isKindOfClass:[NSMutableArray class]]) {
-            [output setObject:[self deepCopyArray:item] forKey:k];
-        }
-        else { //It had better be an ordinary object!
-            [output setObject:[item copy] forKey:k];
-        }
-    }
-    return output;
-}
-
-- (NSMutableArray*) deepCopyArray:(NSMutableArray*)original {
-    NSMutableArray* output = [[NSMutableArray alloc] init];
-    for (id item in original) {
-        if ([item isKindOfClass:[NSMutableDictionary class]]) {
-            [output addObject:[self deepCopyDictionary:item]];
-        }
-        else if ([item isKindOfClass:[NSMutableArray class]]) {
-            [output addObject:[self deepCopyArray:item]];
-        }
-        else { //It had better be an ordinary object!
-            [output addObject:[item copy]];
-        }
-    }
-    return output;
-}
-
-
-
-
-
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

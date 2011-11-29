@@ -7,7 +7,7 @@
 //
 
 #import "ActiveSettingCell.h"
-#import "SingleCategoryEditorVC.h"
+#import "SingleCategoryEditor.h"
 #import "PresetConfirmation.h"
 #import "SeeListEditsVC.h"
 @implementation ActiveSettingCell
@@ -64,12 +64,12 @@
     else {
         [myDict setObject:[[NSNumber alloc] initWithInt:0] forKey:myKey];
     }//How to dealloc these numbers?
-    [(SingleCategoryEditorVC*)[self delegate] propagate];
+    [(SingleCategoryEditor*)[self delegate] propagate];
 
 }
 
 - (IBAction)editButtonClicked:(id)sender {
-    [(SingleCategoryEditorVC*)[self delegate] editButtonClicked];
+    [(SingleCategoryEditor*)[self delegate] editButtonClicked];
 }
 
 
@@ -91,7 +91,7 @@
     //[self alert:@"asfd"];
     //[self alert:((UITextField*)sender).text ];
     [myDict setObject:((UITextField*)sender).text forKey:myKey];
-    [(SingleCategoryEditorVC*)[self delegate] propagate];
+    [(SingleCategoryEditor*)[self delegate] propagate];
 }
 
 

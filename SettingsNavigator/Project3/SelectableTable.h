@@ -16,7 +16,7 @@
 
 
 
-@interface SettingsCategories : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SettingsCategoryVCDelegate> {
+@interface SelectableTable : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SettingsCategoryVCDelegate> {
     UITableView *scvcTableView;
     NSString* tempGroupName;
 }
